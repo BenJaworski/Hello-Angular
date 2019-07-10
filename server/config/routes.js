@@ -3,8 +3,8 @@ const controller = require('../controllers/tasks.js');
 
 module.exports = (app)=>{
     app.get('/tasks', controller.index)
-    app.get('/task/:_id', controller.search)
-    app.post('/new', controller.create)
-    app.put('/:_id', controller.update)
-    app.delete('/remove/:_id', controller.delete)
+    app.get('/tasks/:_id', controller.search)
+    app.post('/tasks', controller.create)
+    app.put('/tasks/:_id', controller.update)
+    app.delete('/tasks/:_id', controller.delete)
 }
