@@ -5,7 +5,7 @@ module.exports = {
     index: (req,res)=>{
         tasks.find({})
             .then((data)=> {
-                res.json({message: "Success", data: data});
+                res.json(data);
             })
             .catch((err)=>{
                 console.log(err);
@@ -14,7 +14,7 @@ module.exports = {
     search:(req,res)=>{
         tasks.findById(req.params.id)
             .then((data)=> {
-                res.json({message: "Success", data: data});
+                res.json(data);
             })
             .catch((err)=>{
                 console.log(err);
