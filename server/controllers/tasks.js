@@ -3,43 +3,49 @@ const tasks = new mongoose.model('Task');
 
 module.exports = {
     index: (req,res)=>{
-        tasks.find({}, function(err, data){
-            if(err){
+        tasks.find({})
+            .then((data)=> {
+                res.json({message: "Success", data: data});
+            })
+            .catch((err)=>{
                 console.log(err);
-            }
-            res.json({message: "Success", data: data});
-        })
+            })
     },
     search:(req,res)=>{
-        tasks.findById(req.params.id, function(err, data){
-            if(err){
+        tasks.findById(req.params.id)
+            .then((data)=> {
+                res.json({message: "Success", data: data});
+            })
+            .catch((err)=>{
                 console.log(err);
-            }
-            res.json({message: "Success", data: data});
-        })
+            })
     },
     create:(req,res)=>{
-        tasks.create(req.body, function(err, data){
-            if(err){
+        tasks.create(req.body)
+            .then((data)=> {
+                console.log(data)
+                res.json({message: "Success", data: data});
+            })
+            .catch((err)=>{
                 console.log(err);
-            }
-            res.json({message: "Success", data: data});
-        })
+            })
     },
     update:(req,res)=>{
-        tasks.findByIdAndUpdate(req.params.id, req.body, function(err, data){
-            if(err){
+        tasks.findByIdAndUpdate(req.params.id, req.body)
+            .then((data)=> {
+                res.json({message: "Success", data: data});
+            })
+            .catch((err)=>{
                 console.log(err);
-            }
-            res.json({message: "Success", data: data});
-        })
+            })
     },
     delete:(req,res)=>{
-        tasks.findByIdAndRemove(req.params.id, function(err, data){
-            if(err){
+        tasks.findByIdAndDelete(req.params.id)
+            .then((data)=> {
+                res.json({message: "Success", data: data});
+            })
+            .catch((err)=>{
                 console.log(err);
-            }
-            res.json({message: "Success", data: data});
-        })
+            })
     }
 }
